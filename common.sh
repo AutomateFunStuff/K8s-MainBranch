@@ -45,14 +45,14 @@ sudo apt-get update -y
 sudo apt-get install -y software-properties-common curl apt-transport-https ca-certificates
 
 # Download and install containerd
-curl -LO https://github.com/containerd/containerd/releases/download/v${CONTAINERD_VERSION}/containerd-${CONTAINERD_VERSION}-linux-amd64.tar.gz
-sudo tar Cxzvf /usr/local containerd-${CONTAINERD_VERSION}-linux-amd64.tar.gz
-rm containerd-${CONTAINERD_VERSION}-linux-amd64.tar.gz
+curl -LO https://github.com/containerd/containerd/releases/download/v${CONTAINERD_VERSION}/containerd-${CONTAINERD_VERSION}-linux-arm64.tar.gz
+sudo tar Cxzvf /usr/local containerd-${CONTAINERD_VERSION}-linux-arm64.tar.gz
+rm containerd-${CONTAINERD_VERSION}-linux-arm64.tar.gz
 
 # Download and install runc
-curl -LO https://github.com/opencontainers/runc/releases/download/v${RUNC_VERSION}/runc.amd64
-sudo install -m 755 runc.amd64 /usr/local/sbin/runc
-rm runc.amd64
+curl -LO https://github.com/opencontainers/runc/releases/download/v${RUNC_VERSION}/runc.arm64
+sudo install -m 755 runc.arm64 /usr/local/sbin/runc
+rm runc.arm64
 
 # Configure containerd
 sudo mkdir -p /etc/containerd
@@ -93,9 +93,9 @@ sudo systemctl start containerd.service
 echo "Containerd runtime installed successfully"
 
 # Install crictl
-curl -LO https://github.com/kubernetes-sigs/cri-tools/releases/download/${CRICTL_VERSION}/crictl-${CRICTL_VERSION}-linux-amd64.tar.gz
-sudo tar zxvf crictl-${CRICTL_VERSION}-linux-amd64.tar.gz -C /usr/local/bin
-rm -f crictl-${CRICTL_VERSION}-linux-amd64.tar.gz
+curl -LO https://github.com/kubernetes-sigs/cri-tools/releases/download/${CRICTL_VERSION}/crictl-${CRICTL_VERSION}-linux-arm64.tar.gz
+sudo tar zxvf crictl-${CRICTL_VERSION}-linux-arm64.tar.gz -C /usr/local/bin
+rm -f crictl-${CRICTL_VERSION}-linux-arm64.tar.gz
 
 # Configure crictl to use containerd
 cat <<EOF | sudo tee /etc/crictl.yaml
