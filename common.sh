@@ -133,3 +133,7 @@ local_ip="$(ip --json addr show enp0s1 | jq -r '.[0].addr_info[] | select(.famil
 cat > /etc/default/kubelet << EOF
 KUBELET_EXTRA_ARGS=--node-ip=$local_ip
 EOF
+
+#Install Docker.io
+
+apt install docker.io -y
