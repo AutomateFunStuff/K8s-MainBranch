@@ -10,6 +10,7 @@ CONTAINERD_VERSION="2.2.0"
 RUNC_VERSION="1.3.3"
 CRICTL_VERSION="v1.34.0"
 KUBERNETES_INSTALL_VERSION="1.34.0-1.1"
+arc=arm64
 
 # Disable swap
 sudo swapoff -a
@@ -43,7 +44,7 @@ sudo apt-get install -y apt-transport-https ca-certificates curl gpg
 # Install containerd Runtime
 sudo apt-get update -y
 sudo apt-get install -y software-properties-common curl apt-transport-https ca-certificates
-
+ 
 # Download and install containerd
 curl -LO https://github.com/containerd/containerd/releases/download/v${CONTAINERD_VERSION}/containerd-${CONTAINERD_VERSION}-linux-arm64.tar.gz
 sudo tar Cxzvf /usr/local containerd-${CONTAINERD_VERSION}-linux-arm64.tar.gz
@@ -126,7 +127,7 @@ sudo apt-get update -y
 sudo apt-get install -y jq
 
 # Retrieve the local IP address of the eth0 interface and set it for kubelet
-local_ip="$(ip --json addr show eth1 | jq -r '.[0].addr_info[] | select(.family == "inet") | .local')"
+local_ip="$(ip --json addr show enp0s1 | jq -r '.[0].addr_info[] | select(.family == "inet") | .local')"
 
 # Write the local IP address to the kubelet default configuration file
 cat > /etc/default/kubelet << EOF
