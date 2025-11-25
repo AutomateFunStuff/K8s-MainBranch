@@ -31,9 +31,6 @@ Control plane (master) node setup script. This script:
 - Configures kubeconfig
 - Installs Calico network plugin
 
-### verify-setup.sh
-Verification script to check installed components and their versions after setup.
-
 ## Usage
 
 ### 1. Setup Control Plane Node
