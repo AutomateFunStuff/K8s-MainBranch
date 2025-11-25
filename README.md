@@ -53,13 +53,6 @@ sudo bash common.sh
 sudo kubeadm join <master-ip>:6443 --token <token> --discovery-token-ca-cert-hash sha256:<hash>
 ```
 
-### 3. Verify Setup
-
-```bash
-# Check all component versions
-bash verify-setup.sh
-```
-
 ## Post-Installation
 
 ### Using crictl
