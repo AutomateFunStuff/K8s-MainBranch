@@ -13,7 +13,9 @@ crictl: v1.34.0
 Network Plugin: Calico
 Scripts
 
+###########
 common.sh
+##########
 
 Common setup script for all nodes (control plane and worker nodes). This script:
 
@@ -23,8 +25,10 @@ Sets up networking parameters
 Installs containerd runtime
 Installs and configures crictl
 Installs kubelet, kubeadm, and kubectl
-master.sh
 
+##########
+master.sh
+#########
 Control plane (master) node setup script. This script:
 
 Pulls required Kubernetes images
